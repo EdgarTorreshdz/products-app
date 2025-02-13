@@ -52,7 +52,8 @@ Conectando a la base de datos en localhost:1433...
 Servidor corriendo en http://localhost:3000/
 
 📌 ¿Qué hacer si la Conexión Falla?
-Si tienes problemas con la conexión a la base de datos: 1️⃣ Verifica que SQL Server está corriendo en el puerto correcto (DB_PORT).
+Si tienes problemas con la conexión a la base de datos: 
+1️⃣ Verifica que SQL Server está corriendo en el puerto correcto (DB_PORT).
 2️⃣ Asegúrate de que el usuario (DB_USER) y contraseña (DB_PASSWORD) son correctos.
 3️⃣ Si usas Docker, revisa la configuración de red para permitir conexiones externas.
 
