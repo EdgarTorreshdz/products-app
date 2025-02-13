@@ -74,7 +74,7 @@ Para configurarlo, debes modificar el archivo `environment.ts`.
 1️⃣ Ubicación del Archivo
 📄 **Archivo a editar:**  
 
-2️⃣ Configurar la URL del Backend**
+2️⃣ Configurar la URL del frontend**
 📌 **Abre `environment.ts` y edita la propiedad `apiUrl`:**
 
 export const environment = {
