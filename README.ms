@@ -3,7 +3,7 @@
 Este es un proyecto full stack que incluye:
 
 - 🌐 **Frontend:** Angular con Material UI
-- 🖥️ **Backend:** Node.js + Express con base de datos (MongoDB o SQL)
+- 🖥️ **Backend:** Node.js + Express con base de datos SQL
 
 ---
 
@@ -17,12 +17,11 @@ Este es un proyecto full stack que incluye:
 | **TypeORM**       | ORM para bases de datos SQL | `^0.3.20`  |
 | **MSSQL**         | Conector para Microsoft SQL Server | `^10.0.4`  |
 
-### **1️⃣ Clonar el Repositorio**
-```sh
-git clone https://github.com/TU_USUARIO/products-app.git
+1️⃣ Clonar el Repositorio**
+git clone https://github.com/EdgarTorreshdz/products-app.git
 cd products-app
 
-### **2️⃣ Instalar Dependencias Backend**
+2️⃣ Instalar Dependencias Backend**
 cd backend-app && npm install
 
 3️⃣ Configurar Variables de Entorno**
@@ -41,7 +40,6 @@ DB_INSTANCE=SQLEXPRESS  # Instancia de SQL Server
 # Seguridad
 JWT_SECRET=tu_clave_secreta  # Clave secreta para autenticación JWT
 
-
 ▶️ Verificar que .env se Carga Correctamente
 Después de configurar .env, ejecuta el backend con:
 En desarrollo
@@ -56,8 +54,6 @@ Si tienes problemas con la conexión a la base de datos:
 1️⃣ Verifica que SQL Server está corriendo en el puerto correcto (DB_PORT).
 2️⃣ Asegúrate de que el usuario (DB_USER) y contraseña (DB_PASSWORD) son correctos.
 3️⃣ Si usas Docker, revisa la configuración de red para permitir conexiones externas.
-
-
 
 ## 🚀 Instalación Rápida FrontEnd
 
@@ -75,3 +71,6 @@ ng serve --open
 ❌ Si aparece un error, revisa que node_modules/ exista o reinstala con:
 rd /s /q node_modules package-lock.json
 npm install
+
+🚀 Contacto
+Si tienes preguntas o sugerencias, no dudes en abrir un issue o contactarme.
