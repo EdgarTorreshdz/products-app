@@ -2,29 +2,29 @@
 
 Este es un proyecto full stack que incluye:
 
-- 🌐 **Frontend:** Angular con Material UI
-- 🖥️ **Backend:** Node.js + Express con base de datos SQL
+- 🌐 Frontend: Angular con Material UI
+- 🖥️ Backend: Node.js + Express con base de datos SQL
 
 ---
 
 ## 🚀 Instalación Rápida Backend
-### **📌 Tecnologías Principales**
+### 📌 Tecnologías Principales
 | Tecnología         | Descripción                                    | Versión 📌  |
 |-------------------|--------------------------------|-----------|
-| **Node.js**       | Plataforma de desarrollo en JavaScript | `^22.13.1`  |
-| **Express.js**    | Framework para servidores HTTP  | `^4.21.2`  |
-| **TypeScript**    | Superset de JavaScript con tipado | `^5.7.3`  |
-| **TypeORM**       | ORM para bases de datos SQL | `^0.3.20`  |
-| **MSSQL**         | Conector para Microsoft SQL Server | `^10.0.4`  |
+| Node.js       | Plataforma de desarrollo en JavaScript | `^22.13.1`  |
+| Express.js    | Framework para servidores HTTP  | `^4.21.2`  |
+| TypeScript    | Superset de JavaScript con tipado | `^5.7.3`  |
+| TypeORM       | ORM para bases de datos SQL | `^0.3.20`  |
+| MSSQL         | Conector para Microsoft SQL Server | `^10.0.4`  |
 
-1️⃣ Clonar el Repositorio**
+1️⃣ Clonar el Repositorio
 git clone https://github.com/EdgarTorreshdz/products-app.git
 cd products-app
 
-2️⃣ Instalar Dependencias Backend**
+2️⃣ Instalar Dependencias Backend
 cd backend-app && npm install
 
-3️⃣ Configurar Variables de Entorno**
+3️⃣ Configurar Variables de Entorno
 Crea el archivo de configuración para el backend:
 linux
 cp backend-app/.env.example backend-app/.env
@@ -66,16 +66,16 @@ Si tienes problemas con la conexión a la base de datos:
 # AngularProducts
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 
-### ** Instalar Dependencias FrontEnd**
+###  Instalar Dependencias FrontEnd
 cd ../angular-products && npm install
 
 El frontend necesita saber dónde está el backend para comunicarse correctamente.  
 Para configurarlo, debes modificar el archivo `environment.ts`.
 1️⃣ Ubicación del Archivo
-📄 **Archivo a editar:**  
+📄 Archivo a editar:  
 
-2️⃣ Configurar la URL del frontend**
-📌 **Abre `environment.ts` y edita la propiedad `apiUrl`:**
+2️⃣ Configurar la URL del frontend
+📌 Abre `angular-products/src/environments/environment.ts` y edita la propiedad `apiUrl`:
 
 export const environment = {
   production: false,
