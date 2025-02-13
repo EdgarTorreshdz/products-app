@@ -26,7 +26,10 @@ cd backend-app && npm install
 
 3️⃣ Configurar Variables de Entorno**
 Crea el archivo de configuración para el backend:
+linux
 cp backend-app/.env.example backend-app/.env
+windows
+copy backend-app\.env.example backend-app\.env
 
 📌 Abre el archivo .env y edita las siguientes variables según tu configuración:
 # Configuración de la Base de Datos SQL Server
@@ -44,7 +47,10 @@ JWT_SECRET=tu_clave_secreta  # Clave secreta para autenticación JWT
 Después de configurar .env, ejecuta el backend con:
 En desarrollo
 cd backend-app
-npm run dev
+npm run dev 
+o 
+npx ts-node src/server.ts 
+
 Si todo está bien, deberías ver un mensaje similar en la terminal:
 Conectando a la base de datos en localhost:1433...
 Servidor corriendo en http://localhost:3000/
@@ -63,7 +69,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### ** Instalar Dependencias FrontEnd**
 cd ../angular-products && npm install
 
-Ejecutar el Frontend
+El frontend necesita saber dónde está el backend para comunicarse correctamente.  
+Para configurarlo, debes modificar el archivo `environment.ts`.
+1️⃣ Ubicación del Archivo
+📄 **Archivo a editar:**  
+
+2️⃣ Configurar la URL del Backend**
+📌 **Abre `environment.ts` y edita la propiedad `apiUrl`:**
+
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000/'  // Cambiar esta URL según la dirección del backend
+};
+
+3️⃣ Ejecutar el Frontend
 cd angular-products
 ng serve --open
 

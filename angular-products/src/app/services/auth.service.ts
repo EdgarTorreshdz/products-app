@@ -3,13 +3,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environment';  // 📌 Importar configuración
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth';
-
+  private apiUrl = `${environment.apiUrl}/auth`;
   constructor(private http: HttpClient) {}
 
   private handleError(error: HttpErrorResponse) {

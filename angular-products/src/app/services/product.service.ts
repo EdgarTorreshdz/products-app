@@ -4,12 +4,13 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Product } from '../models/product.model';
+import { environment } from '../../environments/environment';  // 📌 Importar configuración
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/products';
+  private apiUrl = `${environment.apiUrl}/products`;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
