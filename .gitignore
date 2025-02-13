@@ -40,6 +40,12 @@ build/Release
 
 # Dependency directories
 node_modules/
+angular-products/node_modules/
+backend-app/node_modules/
+
+# Archivos de configuración de entorno
+.env
+backend-app/.env
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)

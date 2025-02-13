@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "CommonJS",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "strict": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "typeRoots": ["./src/types", "./node_modules/@types"]
+    }
+  }
+  
