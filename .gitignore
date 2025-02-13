@@ -39,9 +39,31 @@ bower_components
 build/Release
 
 # Dependency directories
+# Ignorar dependencias de Node.js
 node_modules/
-angular-products/node_modules/
+
+# Ignorar dependencias del backend y frontend
 backend-app/node_modules/
+angular-products/node_modules/
+
+# Archivos de configuración de entorno
+.env
+backend-app/.env
+
+# Archivos generados por Angular
+angular-products/.angular/
+angular-products/.vscode/
+angular-products/dist/
+angular-products/.firebase/
+angular-products/src/environments/environment.prod.ts
+angular-products/src/environments/environment.ts
+
+# Archivos de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 
 # Archivos de configuración de entorno
 .env
