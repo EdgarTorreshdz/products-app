@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-title>{{ product.id ? (isViewMode ? 'Ver Producto' : 'Editar Producto') : 'Nuevo Producto' }}</mat-card-title>
+
+  <form *ngIf="product" (ngSubmit)="saveProduct()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" [(ngModel)]="product.nombre" name="nombre" required [readonly]="isViewMode">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <input matInput type="text" [(ngModel)]="product.descripcion" name="descripcion" required [readonly]="isViewMode">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" [(ngModel)]="product.precio" name="precio" required [readonly]="isViewMode">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Stock</mat-label>
+      <input matInput type="number" [(ngModel)]="product.stock" name="stock" required [readonly]="isViewMode">
+    </mat-form-field>
+
+    <div class="button-group">
+      <button *ngIf="!isViewMode" mat-raised-button color="primary" type="submit">Guardar</button>
+      <button mat-button (click)="closeForm.emit()">Cerrar</button>
+    </div>
+  </form>
+</mat-card>

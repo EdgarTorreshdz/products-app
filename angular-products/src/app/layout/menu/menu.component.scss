@@ -1,0 +1,28 @@
+.spacer {
+  flex: 1;
+}
+
+mat-toolbar {
+  background: #2c2c2c;
+  color: white;
+  padding: 0 16px;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button {
+  font-weight: bold;
+  color: white;
+}
+
+button[mat-raised-button] {
+  background: #424242;
+  color: white;
+}
+
+button[mat-raised-button]:hover {
+  background: #616161;
+}

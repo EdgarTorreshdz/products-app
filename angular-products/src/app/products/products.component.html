@@ -1,0 +1,62 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="header">
+    <h2>Lista de Productos</h2>
+    <button mat-raised-button color="primary" (click)="addProduct()">➕ Agregar Producto</button>
+  </div>
+
+  <app-product-form
+    *ngIf="showForm && productToEdit"
+    [product]="productToEdit"
+    [isViewMode]="isViewMode"
+    (closeForm)="closeForm()"
+    (productUpdated)="loadProducts()">
+  </app-product-form>
+
+  <mat-table [dataSource]="products" class="mat-elevation-z8" *ngIf="products.length > 0">
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.nombre }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.descripcion }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let product"> ${{ product.precio }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="stock">
+      <mat-header-cell *matHeaderCellDef> Stock </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.stock }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let product">
+        <!-- Botón Ver -->
+        <button mat-icon-button color="accent" matTooltip="Ver Producto" (click)="viewProduct(product)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <!-- Botón Editar -->
+        <button mat-icon-button color="primary" matTooltip="Editar Producto" *ngIf="isProductOwner(product)" (click)="editProduct(product)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <!-- Botón Eliminar -->
+        <button mat-icon-button color="warn" matTooltip="Eliminar Producto" *ngIf="isProductOwner(product)" (click)="deleteProduct(product.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="['nombre', 'descripcion', 'precio', 'stock', 'acciones']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['nombre', 'descripcion', 'precio', 'stock', 'acciones'];"></mat-row>
+  </mat-table>
+</div>
