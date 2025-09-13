@@ -1,11 +1,16 @@
 import { Request } from "express";
 
-declare module "express" {
-  export interface Request {
-    user?: {
-      id: number;
-      email: string;
-      rol: string;
-    };
+declare global {
+  namespace Express {
+    export interface Request {
+      user?: {
+        id: number;
+        email: string;
+        rol: string;
+      };
+    }
   }
 }
+
+// Esto es necesario para que TypeScript lo trate como módulo
+export {};
