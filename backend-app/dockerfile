@@ -10,14 +10,19 @@ RUN npm run build
 # Production stage
 FROM node:18-alpine
 WORKDIR /app
+
+# Crear carpeta data para SQLite con permisos
+RUN mkdir -p /app/data && chown -R node:node /app/data
+
+# Copiar archivos
 COPY package*.json ./
 RUN npm install --only=production
 COPY --from=builder /app/dist/ ./dist/
-COPY .env ./
 
-# Asegurar que tengamos permisos para escribir la base de datos
-RUN mkdir -p /app/data && chown -R node:node /app
+# Usar usuario node para seguridad
 USER node
 
 EXPOSE 3000
-CMD ["npm", "start"]
+
+# Comando directo - más confiable que "npm start"
+CMD ["node", "dist/server.js"]
