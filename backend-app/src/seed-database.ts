@@ -1,4 +1,3 @@
-// src/seed-database.ts
 import { AppDataSource } from './data-source';
 import { User } from './entities/User';
 import { Product } from './entities/Product';
@@ -6,17 +5,21 @@ import bcrypt from 'bcryptjs';
 
 async function seedDatabase() {
   try {
+    // 1. INICIALIZAR Y CREAR TABLAS
     await AppDataSource.initialize();
-    console.log('✅ Conectado a SQLite para seeding');
+    await AppDataSource.synchronize(); // ← ¡CREA LAS TABLAS!
+    console.log('✅ Tablas creadas y conectado a SQLite');
+    
+    // 2. Verificar tablas existentes
+    const tables = await AppDataSource.query(
+      "SELECT name FROM sqlite_master WHERE type='table'"
+    );
+    console.log('📊 Tablas existentes:', tables);
 
     const userRepository = AppDataSource.getRepository(User);
     const productRepository = AppDataSource.getRepository(Product);
 
-    // Limpiar tablas (opcional - cuidado en producción)
-    await productRepository.clear();
-    await userRepository.clear();
-
-    // Crear usuarios
+    // 3. Crear usuarios
     const adminUser = userRepository.create({
       nombre: 'Administrador',
       email: 'admin@example.com',
@@ -33,7 +36,7 @@ async function seedDatabase() {
 
     await userRepository.save([adminUser, regularUser]);
 
-    // Crear productos
+    // 4. Crear productos
     const products = [
       {
         nombre: 'Laptop Gaming',
