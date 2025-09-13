@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+// src/entities/Product.ts
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import { User } from "./User";
 
 @Entity()
@@ -12,12 +13,23 @@ export class Product {
   @Column("text")
   descripcion!: string;
 
-  @Column("decimal", { precision: 10, scale: 2 })
+  @Column("real") // SQLite no tiene "decimal", usamos "real"
   precio!: number;
 
-  @Column("int")
+  @Column("integer")
   stock!: number;
 
-  @ManyToOne(() => User, (user) => user.id, { onDelete: "CASCADE" })
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  creado_en!: Date;
+
+  @ManyToOne(() => User, (user) => user.productos, { 
+    onDelete: "CASCADE",
+    nullable: false 
+  })
+  @JoinColumn({ name: 'usuario_creador_id' }) // Mejor nombre para la columna FK
   usuario_creador!: User;
+
+  // Columna FK explícita (opcional pero recomendado)
+  @Column({ name: 'usuario_creador_id' })
+  usuario_creador_id!: number;
 }

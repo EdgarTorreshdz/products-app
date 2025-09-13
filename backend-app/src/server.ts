@@ -7,24 +7,53 @@ import "reflect-metadata";
 import authRoutes from "./routes/authRoutes";
 import productRoutes from "./routes/productRoutes";
 
-
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+
+// Rutas
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
+
+// Ruta de prueba
 app.get('/', (req, res) => {
-  res.send('API funcionando');
+  res.send('API funcionando con SQLite');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// Función para inicializar la aplicación
+async function initializeApp() {
+  try {
+    // Inicializar base de datos primero
+    await AppDataSource.initialize();
+    console.log('✅ Conexión a SQLite establecida correctamente');
+    
+    // Iniciar servidor después de conectar a la BD
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      console.log(`📊 Base de datos: ${process.env.DB_PATH || './local-database.sqlite'}`);
+    });
+    
+  } catch (error) {
+    console.error('❌ Error iniciando la aplicación:', error);
+    process.exit(1); // Salir si no puede conectar a la BD
+  }
+}
+
+// Manejo de cierre graceful
+process.on('SIGINT', async () => {
+  console.log('\n🛑 Apagando servidor gracefulmente...');
+  try {
+    await AppDataSource.destroy();
+    console.log('✅ Conexión a base de datos cerrada');
+  } catch (error) {
+    console.error('❌ Error cerrando conexión:', error);
+  }
+  process.exit(0);
 });
 
-AppDataSource.initialize()
-  .then(() => {
-    console.log('Conexión a la base de datos establecida');
-  })
-  .catch((error) => console.log('Error conectando a la base de datos:', error))
+// Inicializar la aplicación
+initializeApp();
