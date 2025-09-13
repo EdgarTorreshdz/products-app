@@ -1,8 +1,8 @@
-import { Request } from "express";
+import "express";
 
 declare global {
   namespace Express {
-    export interface Request {
+    interface Request {
       user?: {
         id: number;
         email: string;
@@ -11,6 +11,3 @@ declare global {
     }
   }
 }
-
-// Esto es necesario para que TypeScript lo trate como módulo
-export {};
