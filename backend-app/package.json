@@ -35,11 +35,11 @@
     "@types/cors": "2.8.19",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/morgan": "1.9.10",
-    "@types/node": "22.13.1"
+    "@types/node": "22.13.1",
+    "ts-node": "10.9.2"
   },
   "devDependencies": {
     "nodemon": "3.1.9",
-    "ts-node": "10.9.2",
     "typescript": "5.7.3"
   }
 }
