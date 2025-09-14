@@ -1,5 +1,18 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "version": 3,
+  "builds": [
+    {
+      "src": "angular-products/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/angular-products"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
