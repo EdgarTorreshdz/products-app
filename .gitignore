@@ -55,8 +55,6 @@ angular-products/.angular/
 angular-products/.vscode/
 angular-products/dist/
 angular-products/.firebase/
-angular-products/src/environments/environment.prod.ts
-angular-products/src/environments/environment.ts
 
 # Archivos de logs
 *.log
