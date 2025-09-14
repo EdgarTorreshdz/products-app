@@ -6,6 +6,7 @@ import { AppDataSource } from './data-source';
 import "reflect-metadata";
 import authRoutes from "./routes/authRoutes";
 import productRoutes from "./routes/productRoutes";
+import { seedDatabase } from "./seed-database";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,7 +31,7 @@ async function initializeApp() {
     // Inicializar base de datos primero
     await AppDataSource.initialize();
     console.log('✅ Conexión a SQLite establecida correctamente');
-    
+    await seedDatabase();
     // Iniciar servidor después de conectar a la BD
     app.listen(PORT, () => {
       console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);

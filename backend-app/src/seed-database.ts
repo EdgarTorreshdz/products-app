@@ -3,22 +3,16 @@ import { User } from './entities/User';
 import { Product } from './entities/Product';
 import bcrypt from 'bcryptjs';
 
-async function seedDatabase() {
+export async function seedDatabase() {
   try {
-    // 1. INICIALIZAR Y CREAR TABLAS
-    await AppDataSource.initialize();
-    await AppDataSource.synchronize(); // ← ¡CREA LAS TABLAS!
-    console.log('✅ Tablas creadas y conectado a SQLite');
-    
-    // 2. Verificar tablas existentes
-    const tables = await AppDataSource.query(
-      "SELECT name FROM sqlite_master WHERE type='table'"
-    );
-    console.log('📊 Tablas existentes:', tables);
-
     const userRepository = AppDataSource.getRepository(User);
     const productRepository = AppDataSource.getRepository(Product);
-
+    const adminExists = await userRepository.findOneBy({ email: 'admin@example.com' });
+    if (adminExists) {
+      console.log('⚠️ Usuarios ya existen, se omite el seeding.');
+      await AppDataSource.destroy();
+      return;
+    }
     // 3. Crear usuarios
     const adminUser = userRepository.create({
       nombre: 'Administrador',
