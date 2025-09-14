@@ -29,9 +29,17 @@ app.get('/', (req, res) => {
 async function initializeApp() {
   try {
     // Inicializar base de datos primero
-    await AppDataSource.initialize();
-    console.log('✅ Conexión a SQLite establecida correctamente');
+    if (!AppDataSource.isInitialized) {
+      await AppDataSource.initialize();
+      console.log('✅ Conexión a SQLite establecida correctamente');
+    }
+
+    // 2️⃣ Sincroniza tablas (solo si quieres crear automáticamente)
+    await AppDataSource.synchronize();
+
+    // 3️⃣ Ejecuta el seeder solo si no hay usuarios
     await seedDatabase();
+
     // Iniciar servidor después de conectar a la BD
     app.listen(PORT, () => {
       console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
