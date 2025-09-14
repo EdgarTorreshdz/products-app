@@ -6,7 +6,9 @@
     "dev": "npx ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "seed": "ts-node src/seed-database.ts",
+    "postinstall": "npm run seed"
   },
   "keywords": [],
   "author": "",
