@@ -7,8 +7,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "typeorm": "typeorm-ts-node-commonjs",
-    "seed": "ts-node src/seed-database.ts",
-    "postinstall": "npm run seed"
+    "seed": "node dist/seed-database.js"
   },
   "keywords": [],
   "author": "",
