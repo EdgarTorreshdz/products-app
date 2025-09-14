@@ -10,7 +10,6 @@ export async function seedDatabase() {
     const adminExists = await userRepository.findOneBy({ email: 'admin@example.com' });
     if (adminExists) {
       console.log('⚠️ Usuarios ya existen, se omite el seeding.');
-      await AppDataSource.destroy();
       return;
     }
     // 3. Crear usuarios
@@ -65,7 +64,6 @@ export async function seedDatabase() {
     }
 
     console.log('✅ Base de datos poblada exitosamente!');
-    await AppDataSource.destroy();
 
   } catch (error) {
     console.error('❌ Error en seeding:', error);
